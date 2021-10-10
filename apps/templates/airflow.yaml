@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1/alpha1
+kind: Application
+metadata:
+  name: prometheus
+  namespace: test
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: test
+  project: default
+  source:
+    chart: airflow
+    repoURL: https://airflow.apache.org
+    targetRevision: 1.2.0
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
