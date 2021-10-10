@@ -7,8 +7,8 @@ metadata:
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: default
-  project: default
+    namespace: argocd
+  project: argocd
   source:
     path: apps/
     repoURL: git@github.com/richardbadman/argo-airflow.git
