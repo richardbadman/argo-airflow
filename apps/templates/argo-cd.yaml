@@ -1,19 +1,19 @@
-apiVersion: argoproj.io/v1/alpha1
+apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: prometheus
-  namespace: test
+  name: argo-cd
+  namespace: argocd
   finalizers:
   - resources-finalizer.argocd.argoproj.io
 spec:
   destination:
     server: https://kubernetes.default.svc
-    namespace: test
+    namespace: argocd
   project: default
   source:
-    chart: airflow
-    repoURL: https://airflow.apache.org
-    targetRevision: 1.2.0
+    path: charts/argo-cd
+    repoURL: https://github.com/arthurk/argocd-example-install.git
+    targetRevision: HEAD
   syncPolicy:
     automated:
       prune: true
