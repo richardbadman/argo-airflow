@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1/alpha1
+kind: Application
+metadata:
+  name: airflow
+  namespace: test
+  finalizers:
+  - resources-finalizer.argocd.argoproj.io
+spec:
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: test
+  project: default
+  source:
+    path: chart
+    repoURL: https://github.com/apache/airflow.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
