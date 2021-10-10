@@ -11,8 +11,8 @@ spec:
     namespace: test
   project: default
   source:
-    path: charts/airflow
-    repoURL: https://github.com/airflow-helm.git
+    chart: airflow
+    repoURL: https://airflow-helm.github.io/charts
     targetRevision: HEAD
   syncPolicy:
     automated:
